@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const bgColor = Color(0xFF1D1E33);
+const activeCardColor = Color(0xFF1D1E33);
 
 class InputPage extends StatefulWidget {
   @override
@@ -20,28 +21,61 @@ class _InputPageState extends State<InputPage> {
             Row(
               children: [
                 Expanded(
-                  child: ReusableCard(color: bgColor),
+                  child: ReusableCard(
+                    color: activeCardColor,
+                    cardChild: GenderCard(icon: FontAwesomeIcons.mars, gender: "MALE"),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(color: bgColor),
+                  child: ReusableCard(
+                    color: activeCardColor,
+                    cardChild: GenderCard(icon: FontAwesomeIcons.venus, gender: "FEMALE"),
+                  ),
                 )
               ],
             ),
             Expanded(
-              child: ReusableCard(color: bgColor),
+              child: ReusableCard(color: activeCardColor),
             ),
             Row(
               children: [
                 Expanded(
-                  child: ReusableCard(color: bgColor),
+                  child: ReusableCard(color: activeCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(color: bgColor),
+                  child: ReusableCard(color: activeCardColor),
                 ),
               ],
             ),
           ],
         ));
+  }
+}
+
+class GenderCard extends StatelessWidget {
+  final String gender;
+  final IconData icon;
+
+  GenderCard({@required this.gender, @required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, size: 80.0),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          gender,
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Color(0xFF8D8E98),
+          ),
+        )
+      ],
+    );
   }
 }
 
